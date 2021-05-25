@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 //사용자가 요청 -> 응답(Data)
 
 @RestController
-public class httpControllerTest {
+public class HttpControllerTest {
 	
 	private static final String  TAG = "HttpControllerTest: ";
 	
+	// localhost:8000/blog/http/lombok
 	@GetMapping("/http/lombok")
 	public String lombokTest() {
 		Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
