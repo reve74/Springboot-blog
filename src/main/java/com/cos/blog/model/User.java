@@ -11,6 +11,16 @@ import javax.persistence.Id;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder // 빌더 패턴 !
 @Entity //User 클래스가 MySQL에 테이블이 생성이 된다.
 public class User {
 	
@@ -21,7 +31,7 @@ public class User {
 	@Column(nullable =  false, length = 30)
 	private String username; // 아이디
 	
-	@Column(nullable =  false, length = 100) //해쉬( 비밀번호 암호화)   
+	@Column(nullable =  false, length = 100) //해쉬( 비밀번호 암호화)
 	private String password;
 	
 	@Column(nullable =  false, length = 50)
