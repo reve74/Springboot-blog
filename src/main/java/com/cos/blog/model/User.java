@@ -1,6 +1,6 @@
 package com.cos.blog.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +21,7 @@ public class User {
 	@Column(nullable =  false, length = 30)
 	private String username; // 아이디
 	
-	@Column(nullable =  false, length = 100) //해쉬( 비밀번호 암호화)
+	@Column(nullable =  false, length = 100) //해쉬( 비밀번호 암호화)   
 	private String password;
 	
 	@Column(nullable =  false, length = 50)
