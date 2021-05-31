@@ -31,7 +31,7 @@ public class DummyControllerTest {
 	// save 함수는 id를 전달하면 해당 id에 대한 데이터가 있으면 update를 해주고
 	// save 함수는 id를 전달하면 해당 id에 대한 데이터가 없으면 insert를 한다
 	
-	@Transactional
+	@Transactional // 함수 종료시에 자동 commit이 됨.
 	@PutMapping("/dummy/user/{id}")
 	public User updateUser(@PathVariable int id, @RequestBody User requesUser) { // json 데이터를 요청 => Java Object(MessageConverter의 Jackson라이브러리가 변환해서 받아줌. 
 		System.out.println("id : " +id);
