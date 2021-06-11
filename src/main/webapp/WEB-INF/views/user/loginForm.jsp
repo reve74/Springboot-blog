@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
 	<form>
@@ -17,8 +16,8 @@
 			</label>
 		</div>
 	</form>
-	<button type="btn-login" class="btn btn-primary">로그인</button>
+	<button id="btn-login" class="btn btn-primary">로그인</button>
 </div>
 
-<script src="/blog/js/user.js"></script>
+<script src="/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
