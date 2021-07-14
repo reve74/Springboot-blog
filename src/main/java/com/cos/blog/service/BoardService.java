@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -33,11 +35,17 @@ public class BoardService {
 		board.setUser(user);
 		boardRepository.save(board);
 	}
-
-	public List<Board> 글목록() {
-		return boardRepository.findAll();
+	
+	public Page<Board> 글목록(Pageable pageable) {
+		return boardRepository.findAll(pageable);
 	}
 	
-
+	public Board 글상세보기(int id) {
+		return boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
+				});
+	}
+	
 }
 
