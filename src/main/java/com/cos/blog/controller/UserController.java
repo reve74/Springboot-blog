@@ -21,6 +21,7 @@ import com.cos.blog.model.OAuthToken;
 import com.cos.blog.model.User;
 import com.cos.blog.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -118,7 +119,8 @@ public class UserController {
 		System.out.println(response2.getBody());
 		System.out.println("11111");
 		
-		ObjectMapper objectMapper2 = new ObjectMapper();
+		ObjectMapper objectMapper2 = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
 		KakaoProfile kakaoProfile = null;
 		try {
 			kakaoProfile = objectMapper2.readValue(response2.getBody(), KakaoProfile.class);
