@@ -9,24 +9,27 @@ let index = {
 		$("#btn-update").on("click", () => {	// function(){} ,()=> {}this를 바인딩 하기 위해서
 			this.update();	
 		});
+		$("#btn-reply-save").on("click", () => {	// function(){} ,()=> {}this를 바인딩 하기 위해서
+			this.replySave();	
+		});		
 	},
-	 save: function() {
-		//alert('user의 save함수 호출됨');
+	 replySave: function() {
 		let data = {
-			title: $("#title").val(),
-			content: $("#content").val(),
+			content: $("#reply-content").val()
 		};
+		let boardId = $("#boardId").val();
+		
+
 		
 		$.ajax({
-			// 회원가입 수행 요청
 			type: "POST",
-			url: "/api/board",
+			url: `api/board/${boardId}/reply`,
 			data: JSON.stringify(data), 
 			contentType: "application/json; charset=utf-8", 
 			dataType: "json" 
 		}).done(function(resp){
-			alert("글쓰기가 완료되었습니다.");
-			location.href = "/";
+			alert("댓글작성이 완료되었습니다.");
+			location.href = `/board/${boardId}`;
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
@@ -68,6 +71,28 @@ let index = {
 			}).fail(function(error){
 				alert(JSON.stringify(error));
 			});
+	},
+	 save: function() {
+		//alert('user의 save함수 호출됨');
+		let data = {
+			title: $("#title").val(),
+			content: $("#content").val(),
+		};
+		
+		$.ajax({
+			// 회원가입 수행 요청
+			type: "POST",
+			url: "/api/board",
+			data: JSON.stringify(data), 
+			contentType: "application/json; charset=utf-8", 
+			dataType: "json" 
+		}).done(function(resp){
+			alert("글쓰기가 완료되었습니다.");
+			location.href = "/";
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+		
 	}
 	
 	
